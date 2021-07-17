@@ -1,0 +1,34 @@
+﻿@model List<Vaccine>
+
+<nav class="nav">
+
+    <p><a asp-controller="Vaccines" asp-action="AddNewVaccine" class="btn btn-link mr-2 mb-2">New Vaccine</a></p>
+    
+    <p><a asp-controller="Vaccines" asp-action="AddNewDose" class="btn btn-link mr-2 mb-2">New Doses</a></p>
+
+</nav> 
+
+
+<table class="table">
+    <thead>
+        <tr><th>Vaccine</th><th>Doses Required</th><th>Days Between Doses</th><th>Total Doses Recieved</th><th>Total Doses Left</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var vaccine in Model)
+        {
+        <tr>
+            <td>@vaccine.Name</td>
+            <td>@vaccine.DosesRequired</td>
+            <td>@vaccine.DaysBetweenDoses</td>
+            <td>@vaccine.TotalDosesReceived</td>
+            <td>@vaccine.TotalDosesLeft</td>
+
+
+            <td>
+                <a asp-controller="Vaccines" asp-action="Edit" asp-route-id="@vaccine.Id"
+                   class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
